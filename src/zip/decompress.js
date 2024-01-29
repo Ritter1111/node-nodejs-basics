@@ -1,4 +1,4 @@
-import {  createGunzip } from 'node:zlib';
+import { createGunzip } from "node:zlib";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,14 +12,14 @@ const source = fs.createReadStream(compressedFile);
 const destination = fs.createWriteStream(curentFile);
 
 const decompress = async () => {
-    source.pipe(gzip).pipe(destination)
-    destination.on('finish', () => {
-        console.log('Compressed finish');
-    });
+  source.pipe(gzip).pipe(destination);
+  destination.on("finish", () => {
+    console.log("Compressed finish");
+  });
 
-    destination.on('error', (e) => {
-        console.log(e);
-    })
+  destination.on("error", (e) => {
+    console.log(e);
+  });
 };
 
 await decompress();
